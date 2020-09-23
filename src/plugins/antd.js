@@ -1,13 +1,10 @@
 import Vue from 'vue'
 import {
   Breadcrumb,
-  Button,
   Calendar,
   Col,
   Space,
   Icon,
-  Layout,
-  Menu,
   Radio,
   Row,
   Select,
@@ -15,12 +12,11 @@ import {
   Card,
   Timeline,
   List,
-  Avatar
+  Avatar,
+  Menu,
+  Skeleton
 } from 'ant-design-vue'
 
-Vue.use(Button)
-Vue.use(Layout)
-Vue.use(Menu)
 Vue.use(Breadcrumb)
 Vue.use(Icon)
 Vue.use(Calendar)
@@ -34,3 +30,5 @@ Vue.use(Card)
 Vue.use(Timeline)
 Vue.use(List)
 Vue.use(Avatar)
+Vue.use(Menu)
+Vue.use(Skeleton)

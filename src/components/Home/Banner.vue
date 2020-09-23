@@ -10,6 +10,7 @@ export default {
 
 <style lang="less" scoped>
 .banner {
+  background: #ddd;
   width: 100%;
   height: 120px;
 }

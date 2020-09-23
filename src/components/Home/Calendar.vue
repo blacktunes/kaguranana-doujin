@@ -56,7 +56,7 @@ export default {
       }
       return (
         <div style={{ padding: '10px' }}>
-          <div style={{ marginBottom: '10px' }}>Custom header </div>
+          <div style={{ marginBottom: '10px' }}>直播日历</div>
           <a-row type="flex">
             <a-space>
               <a-col>
@@ -128,7 +128,8 @@ export default {
 
 <style lang="less" scoped>
 .calendar {
-  width: 300px;
+  margin: auto;
+  width: 100%;
   border: 1px solid #d9d9d9;
   border-radius: 4px;
   & /deep/ .ant-fullcalendar-value {
