@@ -19,14 +19,23 @@
 
 <script>
 export default {
+  data () {
+    return {
+      nowDate: null
+    }
+  },
   methods: {
     onPanelChange(e) {
       console.log(e)
     },
-    headerRender({ value, type, onChange, onTypeChange }) {
+    headerRender({ value, onChange }) {
       const start = 0
       const end = 12
       const monthOptions = []
+      if (!this.nowDate) {
+        this.nowDate = value.clone()
+      }
+      const nowDate = this.nowDate
 
       const current = value.clone()
       const localeData = value.localeData()
@@ -87,6 +96,9 @@ export default {
                   {monthOptions}
                 </a-select>
               </a-col>
+              <a-col>
+                <a-button style={{ height: '24px' }} onClick={() => onChange(nowDate)}>now</a-button>
+              </a-col>
             </a-space>
           </a-row>
         </div>
@@ -133,6 +145,7 @@ export default {
   border: 1px solid #d9d9d9;
   border-radius: 4px;
   & /deep/ .ant-fullcalendar-value {
+    cursor: pointer;
     &:hover {
       & + .ant-fullcalendar-content {
         .item {
@@ -156,7 +169,7 @@ export default {
       display: none;
       position: absolute;
       bottom: 150%;
-      right: 105%;
+      left: 105%;
       width: auto;
       background: #fff;
       padding: 5px;

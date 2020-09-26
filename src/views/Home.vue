@@ -41,12 +41,12 @@
         </a-col>
       </a-row>
       <a-row :gutter="[8,8]">
-        <a-col :span="18">
+        <a-col :span="14">
           <a-card>
             <HomeNote />
           </a-card>
         </a-col>
-        <a-col :span="6">
+        <a-col :span="10">
           <a-card>
             <HomeTimeline />
           </a-card>

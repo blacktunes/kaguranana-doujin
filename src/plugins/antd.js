@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import {
+  Button,
   Breadcrumb,
   Calendar,
   Col,
@@ -17,6 +18,7 @@ import {
   Skeleton
 } from 'ant-design-vue'
 
+Vue.use(Button)
 Vue.use(Breadcrumb)
 Vue.use(Icon)
 Vue.use(Calendar)

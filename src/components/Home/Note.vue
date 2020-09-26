@@ -1,16 +1,20 @@
 <template>
   <a-list item-layout="vertical" size="large" :pagination="pagination" :data-source="listData">
     <template v-slot:footer>
-      <b>ant design vue</b> footer part
+      <div @click="() => loading = !loading">
+        <b>点这里</b> 显示/隐藏预览文章
+      </div>
     </template>
     <template v-slot:renderItem="item">
       <a-list-item :key="item.title">
-        <!-- <template v-slot:actions>
+        <!-- 文章预览 -->
+        <template v-if="!loading" v-slot:actions>
           <span v-for="{type, text} in actions" :key="type">
             <a-icon :type="type" style="margin-right: 8px" />
             {{ text }}
           </span>
-        </template> -->
+        </template>
+        <!-- 图片 -->
         <!-- <template v-slot:extra>
           <div style="display: flex;justify-content: center;height: 100%">
           <img
@@ -21,7 +25,7 @@
           />
           </div>
         </template> -->
-        <a-skeleton loading avatar>
+        <a-skeleton :loading="loading" avatar>
         <a-list-item-meta :description="item.description">
           <template v-slot:title>
             <a :href="item.href">{{ item.title }}</a>
@@ -52,6 +56,7 @@ for (let i = 0; i < 23; i++) {
 export default {
   data() {
     return {
+      loading: true,
       listData,
       pagination: {
         onChange: page => {
