@@ -140,6 +140,7 @@ export default {
 
 <style lang="less" scoped>
 .calendar {
+  overflow: hidden;
   margin: auto;
   width: 100%;
   border: 1px solid #d9d9d9;

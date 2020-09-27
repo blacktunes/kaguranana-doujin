@@ -10,10 +10,10 @@
         align="middle"
         style="margin-top: 10px"
       >
-        <a-col :span="8">
+        <a-col :sm="8" :xs="0">
           <HomeCalendar />
         </a-col>
-        <a-col :span="16">
+        <a-col :sm="16" :xs="24">
           <a-card>
             <div class="test">
               <div style="width: 100%;height: 100%">
@@ -41,12 +41,20 @@
         </a-col>
       </a-row>
       <a-row :gutter="[8,8]">
-        <a-col :span="14">
+        <a-col />
+        <a-col :xs="24" :sm="0">
+          <a-card>
+            <HomeTimeline />
+          </a-card>
+        </a-col>
+      </a-row>
+      <a-row :gutter="[8,8]">
+        <a-col :xs="24" :sm="14">
           <a-card>
             <HomeNote />
           </a-card>
         </a-col>
-        <a-col :span="10">
+        <a-col :xs="0" :sm="10">
           <a-card>
             <HomeTimeline />
           </a-card>

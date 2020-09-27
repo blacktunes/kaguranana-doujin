@@ -1,5 +1,5 @@
 <template>
-  <a-list item-layout="vertical" size="large" :pagination="pagination" :data-source="listData">
+  <a-list item-layout="vertical" size="large" :data-source="listData">
     <template v-slot:footer>
       <div @click="() => loading = !loading">
         <b>点这里</b> 显示/隐藏预览文章
@@ -7,7 +7,7 @@
     </template>
     <template v-slot:renderItem="item">
       <a-list-item :key="item.title">
-        <!-- 文章预览 -->
+        <!-- 底部选项 -->
         <template v-if="!loading" v-slot:actions>
           <span v-for="{type, text} in actions" :key="type">
             <a-icon :type="type" style="margin-right: 8px" />
@@ -43,7 +43,7 @@
 
 <script>
 const listData = []
-for (let i = 0; i < 23; i++) {
+for (let i = 0; i < 5; i++) {
   listData.push({
     href: 'https://www.antdv.com/',
     title: `狗妈月刊 ${i}`,
