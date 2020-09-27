@@ -2,9 +2,9 @@
   <div>
     <a-menu v-model="current" mode="horizontal">
       <a-menu-item key="one">
-        <a-icon type="mail" />One
+        <a-icon type="home" />Home
       </a-menu-item>
-      <a-menu-item key="two" disabled>
+      <!-- <a-menu-item key="two" disabled>
         <a-icon type="appstore" />Two
       </a-menu-item>
       <a-sub-menu>
@@ -19,7 +19,7 @@
           <a-menu-item key="setting:3">Option 3</a-menu-item>
           <a-menu-item key="setting:4">Option 4</a-menu-item>
         </a-menu-item-group>
-      </a-sub-menu>
+      </a-sub-menu>-->
     </a-menu>
   </div>
 </template>

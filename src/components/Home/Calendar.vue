@@ -6,8 +6,10 @@
           <a-badge class="badge" color="#108ee9" />
           <div class="item">
             <ul class="events">
-              <li v-for="item in getListData(value)" :key="item.content">
-                <a-badge :status="item.type" :text="item.content" />
+              <li v-for="(item, index) in getListData(value)" :key="index">
+                <a :href="item.url || null" target="_blank">
+                  <a-badge :color="item.color" :text="item.type + ' ' + item.text" />
+                </a>
               </li>
             </ul>
           </div>
@@ -19,9 +21,10 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      nowDate: null
+      nowDate: null,
+      listDate: []
     }
   },
   methods: {
@@ -97,7 +100,7 @@ export default {
                 </a-select>
               </a-col>
               <a-col>
-                <a-button style={{ height: '24px' }} onClick={() => onChange(nowDate)}>now</a-button>
+                <a-button style={{ height: '24px' }} onClick={() => onChange(nowDate)}>today</a-button>
               </a-col>
             </a-space>
           </a-row>
@@ -105,42 +108,31 @@ export default {
       )
     },
     getListData(value) {
-      let listData
-      switch (value.date()) {
-        case 8:
-          listData = [
-            { type: 'warning', content: 'This is warning event.' },
-            { type: 'success', content: 'This is usual event.' }
-          ]
-          break
-        case 10:
-          listData = [
-            { type: 'warning', content: 'This is warning event.' },
-            { type: 'success', content: 'This is usual event.' },
-            { type: 'error', content: 'This is error event.' }
-          ]
-          break
-        case 15:
-          listData = [
-            { type: 'warning', content: 'This is warning event' },
-            { type: 'success', content: 'This is very long usual event。。....' },
-            { type: 'error', content: 'This is error event 1.' },
-            { type: 'error', content: 'This is error event 2.' },
-            { type: 'error', content: 'This is error event 3.' },
-            { type: 'error', content: 'This is error event 4.' }
-          ]
-          break
-        default:
-      }
-      return listData || []
+      const listData = []
+      this.listDate.forEach(item => {
+        if (item.date === value.format('YYYY-MM-DD')) {
+          listData.push(item)
+        }
+      })
+      return listData
     }
+  },
+  mounted() {
+    this.listDate = [
+      {
+        date: '2020-09-27',
+        type: '转发',
+        color: '#108ee9',
+        text: '同人图推荐',
+        url: 'https://t.bilibili.com/439537620111169322?tab=2'
+      }
+    ]
   }
 }
 </script>
 
 <style lang="less" scoped>
 .calendar {
-  overflow: hidden;
   margin: auto;
   width: 100%;
   border: 1px solid #d9d9d9;
@@ -160,7 +152,7 @@ export default {
     width: 70%;
     margin: auto;
     .badge {
-      bottom: 5px;
+      bottom: 2px;
       & /deep/ .ant-badge-status-text {
         margin: 0;
       }
@@ -170,13 +162,16 @@ export default {
       display: none;
       position: absolute;
       bottom: 150%;
-      left: 105%;
+      left: 80%;
       width: auto;
       background: #fff;
       padding: 5px;
       border-radius: 5px;
       border: 1px solid #000;
       animation: show 0.5s;
+      &:hover {
+        display: inline;
+      }
       .events {
         list-style: none;
         margin: 0;
